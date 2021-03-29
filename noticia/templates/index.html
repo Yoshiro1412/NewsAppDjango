@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <section class="noticias">
+    {% for noticia in noticias %}
+        <article class="noticia">
+            {% if noticia.image %}
+            <img src="{{noticia.image}}" alt="imagen" style="width: 100px;">
+            {% endif %}
+            <p class="date">{{noticia.date}}</p>
+            <h2>{{noticia.title}}</h2>
+            <p>{{noticia.content}}</p>
+            <a href="#">Continue Reading</a>
+        </article>
+    {% endfor %}
+    </section>
+    {% for proyecto in proyectos %}
+    <div>
+        <h2>{{proyecto.title}}</h2>
+        <p>{{proyecto.content}}</p>
+        <p>{{proyecto.get_state_display}}</p>
+    </div>
+    {% endfor %}
+</body>
+</html>
